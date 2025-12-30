@@ -24,23 +24,9 @@ export async function POST(request: NextRequest) {
       `,
     })
 
-    // Optionally send confirmation email to the user
-    await resend.emails.send({
-      from: "AI Solved Business Problems <onboarding@resend.dev>",
-      to: email,
-      subject: "Potvrda prijave - AI Solved Business Problems",
-      html: `
-        <h2>Hvala na prijavi, ${name}!</h2>
-        <p>Bit ćete obavješteni kada knjiga "AI Solved Business Problems" postane dostupna za kupnju.</p>
-        <p><strong>Datum izlaska:</strong> 16. ožujak 2026.</p>
-        <p><strong>Cijena:</strong> €30</p>
-        <p>Srdačan pozdrav,<br/>Davor Mulalić</p>
-      `,
-    })
-
     return NextResponse.json({ message: "Email uspješno poslan" }, { status: 200 })
   } catch (error) {
-    console.error("[v0] Error sending email:", error)
+    console.error("Error sending email:", error)
     return NextResponse.json({ error: "Greška prilikom slanja emaila" }, { status: 500 })
   }
 }
