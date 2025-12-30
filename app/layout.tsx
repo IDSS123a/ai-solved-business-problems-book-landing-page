@@ -8,9 +8,9 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "AI Solved Business Problems - Pre-order the Book by Davor Mulalić",
+  title: "AI Solved Business Problems - Get Notified When Available",
   description:
-    "50 real-world business challenges across 10 industries. A practical workbook for managers requiring no coding. Available March 16, 2026 for €30.",
+    "50 real-world business challenges across 10 industries. A practical workbook for managers requiring no coding. Launching March 16, 2026 for €30.",
   generator: "v0.app",
   icons: {
     icon: "https://i.postimg.cc/mrZ4hsYX/davor.png",
