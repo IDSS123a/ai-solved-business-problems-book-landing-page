@@ -375,9 +375,9 @@ export default function BookLandingPage() {
             <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-6 lg:p-8">
               <div className="space-y-4">
                 <div className="text-center">
-                  <p className="text-lg font-semibold">Prijavite se za obavijest o izlasku knjige</p>
+                  <p className="text-lg font-semibold">Sign up to be notified when the book is released</p>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    Bit ćete obavješteni kada knjiga postane dostupna za kupnju 16. ožujka 2026.
+                    You will be notified when the book becomes available for purchase on March 16, 2026.
                   </p>
                 </div>
 
@@ -385,7 +385,7 @@ export default function BookLandingPage() {
                   <div className="space-y-2">
                     <Input
                       type="text"
-                      placeholder="Vaše ime"
+                      placeholder="Your name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       required
@@ -396,7 +396,7 @@ export default function BookLandingPage() {
                   <div className="space-y-2">
                     <Input
                       type="email"
-                      placeholder="Vaša email adresa"
+                      placeholder="Your email address"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
@@ -405,11 +405,11 @@ export default function BookLandingPage() {
                     />
                   </div>
                   <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-                    {isSubmitting ? "Šaljem..." : "Obavijestite me o izlasku"}
+                    {isSubmitting ? "Sending..." : "Notify me about the release"}
                   </Button>
                   {submitMessage && (
                     <p
-                      className={`text-center text-sm ${submitMessage.includes("Hvala") ? "text-primary" : "text-destructive"}`}
+                      className={`text-center text-sm ${submitMessage.includes("Thank you") ? "text-primary" : "text-destructive"}`}
                     >
                       {submitMessage}
                     </p>
