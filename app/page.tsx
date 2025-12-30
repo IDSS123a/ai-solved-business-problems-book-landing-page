@@ -1,11 +1,52 @@
+"use client"
+
+import type React from "react"
+
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Input } from "@/components/ui/input"
 import { Users, TrendingUp, Brain, CheckCircle, Clock } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { useState } from "react"
 
 export default function BookLandingPage() {
+  const [email, setEmail] = useState("")
+  const [name, setName] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState("")
+
+  const handleNotifySubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitMessage("")
+
+    try {
+      const response = await fetch("/api/notify", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, name }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setSubmitMessage("Hvala! Bit ćete obaviješteni o izlasku knjige.")
+        setEmail("")
+        setName("")
+      } else {
+        setSubmitMessage(data.error || "Došlo je do greške. Pokušajte ponovo.")
+      }
+    } catch (error) {
+      setSubmitMessage("Došlo je do greške. Pokušajte ponovo.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <main className="min-h-screen">
       {/* Header */}
@@ -330,12 +371,53 @@ export default function BookLandingPage() {
             </div>
           </Card>
 
-          <div className="rounded-lg border bg-card p-6 text-center">
-            <p className="text-sm font-medium">Want launch day notifications?</p>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Email updates will be available soon. Check back or follow on social media.
-            </p>
-          </div>
+          <Card className="overflow-hidden border-2 border-primary/20">
+            <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-6 lg:p-8">
+              <div className="space-y-4">
+                <div className="text-center">
+                  <p className="text-lg font-semibold">Prijavite se za obavijest o izlasku knjige</p>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Bit ćete obavješteni kada knjiga postane dostupna za kupnju 16. ožujka 2026.
+                  </p>
+                </div>
+
+                <form onSubmit={handleNotifySubmit} className="space-y-4">
+                  <div className="space-y-2">
+                    <Input
+                      type="text"
+                      placeholder="Vaše ime"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required
+                      disabled={isSubmitting}
+                      className="bg-background"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Input
+                      type="email"
+                      placeholder="Vaša email adresa"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      disabled={isSubmitting}
+                      className="bg-background"
+                    />
+                  </div>
+                  <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+                    {isSubmitting ? "Šaljem..." : "Obavijestite me o izlasku"}
+                  </Button>
+                  {submitMessage && (
+                    <p
+                      className={`text-center text-sm ${submitMessage.includes("Hvala") ? "text-primary" : "text-destructive"}`}
+                    >
+                      {submitMessage}
+                    </p>
+                  )}
+                </form>
+              </div>
+            </div>
+          </Card>
         </div>
       </section>
 
