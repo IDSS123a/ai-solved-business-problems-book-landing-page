@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { BookOpen, Users, TrendingUp, Brain, CheckCircle, Clock } from "lucide-react"
+import { Users, TrendingUp, Brain, CheckCircle, Clock } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -12,7 +12,13 @@ export default function BookLandingPage() {
       <header className="sticky top-0 z-50 border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto flex h-16 items-center justify-between px-4 lg:px-8">
           <div className="flex items-center gap-2">
-            <BookOpen className="h-6 w-6" />
+            <Image
+              src="https://i.postimg.cc/mrZ4hsYX/davor.png"
+              alt="Davor Mulalić"
+              width={24}
+              height={24}
+              className="h-6 w-6 rounded-full object-cover"
+            />
             <span className="text-lg font-semibold">AI Solved Business Problems</span>
           </div>
           <nav className="hidden items-center gap-8 md:flex">
@@ -60,7 +66,13 @@ export default function BookLandingPage() {
 
             <div className="flex items-center gap-8 pt-4">
               <div className="flex items-center gap-2">
-                <BookOpen className="h-5 w-5 text-muted-foreground" />
+                <Image
+                  src="https://i.postimg.cc/mrZ4hsYX/davor.png"
+                  alt="Davor Mulalić"
+                  width={20}
+                  height={20}
+                  className="h-5 w-5 rounded-full object-cover"
+                />
                 <span className="text-sm font-medium">eBook Format</span>
               </div>
               <div className="flex items-center gap-2">
@@ -169,7 +181,13 @@ export default function BookLandingPage() {
             <Card className="p-6">
               <div className="flex items-start gap-4">
                 <div className="rounded-lg bg-primary/10 p-3">
-                  <BookOpen className="h-6 w-6" />
+                  <Image
+                    src="https://i.postimg.cc/mrZ4hsYX/davor.png"
+                    alt="Davor Mulalić"
+                    width={24}
+                    height={24}
+                    className="h-6 w-6 rounded-full object-cover"
+                  />
                 </div>
                 <div className="space-y-2">
                   <h3 className="font-semibold">Immediate Digital Delivery</h3>
@@ -226,11 +244,18 @@ export default function BookLandingPage() {
                 </div>
               </div>
 
-              <Button asChild variant="outline">
-                <Link href="https://mulalic.ai-studio.wiki/" target="_blank" rel="noopener noreferrer">
-                  Visit Official Website
-                </Link>
-              </Button>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Button asChild variant="outline">
+                  <Link href="https://www.linkedin.com/in/davormulalic/" target="_blank" rel="noopener noreferrer">
+                    LinkedIn Profile
+                  </Link>
+                </Button>
+                <Button asChild variant="outline">
+                  <Link href="https://mulalic.ai-studio.wiki/" target="_blank" rel="noopener noreferrer">
+                    Official Website
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -319,10 +344,25 @@ export default function BookLandingPage() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div className="flex items-center gap-2">
-              <BookOpen className="h-5 w-5" />
+              <Image
+                src="https://i.postimg.cc/mrZ4hsYX/davor.png"
+                alt="Davor Mulalić"
+                width={20}
+                height={20}
+                className="h-5 w-5 rounded-full object-cover"
+              />
               <span className="font-semibold">AI Solved Business Problems</span>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
+              <Link
+                href="https://www.linkedin.com/in/davormulalic/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-foreground"
+              >
+                LinkedIn
+              </Link>
+              <span>•</span>
               <Link
                 href="https://mulalic.ai-studio.wiki/"
                 target="_blank"
