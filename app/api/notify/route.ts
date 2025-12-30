@@ -8,25 +8,25 @@ export async function POST(request: NextRequest) {
     const { email, name } = await request.json()
 
     if (!email || !name) {
-      return NextResponse.json({ error: "Email i ime su obavezni" }, { status: 400 })
+      return NextResponse.json({ error: "Email and name are mandatory." }, { status: 400 })
     }
 
     // Send notification email to you
     await resend.emails.send({
       from: "AI Solved Business Problems <onboarding@resend.dev>",
       to: "mulalic71@gmail.com",
-      subject: "Nova prijava za obavijest o knjizi",
+      subject: "New notification sign-up for a book.",
       html: `
-        <h2>Nova prijava za obavijest</h2>
+        <h2>New notification sign-up.</h2>
         <p><strong>Ime:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Datum:</strong> ${new Date().toLocaleString("hr-HR")}</p>
       `,
     })
 
-    return NextResponse.json({ message: "Email uspješno poslan" }, { status: 200 })
+    return NextResponse.json({ message: "Email successfully sent." }, { status: 200 })
   } catch (error) {
     console.error("Error sending email:", error)
-    return NextResponse.json({ error: "Greška prilikom slanja emaila" }, { status: 500 })
+    return NextResponse.json({ error: "Error sending email." }, { status: 500 })
   }
 }
