@@ -34,14 +34,14 @@ export default function BookLandingPage() {
       const data = await response.json()
 
       if (response.ok) {
-        setSubmitMessage("Hvala! Bit ćete obaviješteni o izlasku knjige.")
+        setSubmitMessage("Thanks! You will be notified when the book is released.")
         setEmail("")
         setName("")
       } else {
-        setSubmitMessage(data.error || "Došlo je do greške. Pokušajte ponovo.")
+        setSubmitMessage(data.error || "An error has occurred. Please try again.")
       }
     } catch (error) {
-      setSubmitMessage("Došlo je do greške. Pokušajte ponovo.")
+      setSubmitMessage("An error has occurred. Please try again.")
     } finally {
       setIsSubmitting(false)
     }
