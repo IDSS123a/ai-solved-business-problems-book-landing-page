@@ -360,18 +360,18 @@ export default function BookLandingPage() {
                 </div>
 
                 <div className="flex flex-col gap-3 pt-4">
-                  <Button size="lg" className="w-full text-base">
-                    Pre-order on Your Preferred Platform
+                  <Button asChild size="lg" className="w-full text-base">
+                    <Link href="#notify">Get Notified When Available</Link>
                   </Button>
                   <p className="text-center text-xs text-muted-foreground">
-                    Pre-order now and receive on March 16, 2026 • Price in EUR (subject to platform currency conversion)
+                    Book releases on March 16, 2026 • Price in EUR (subject to platform currency conversion)
                   </p>
                 </div>
               </div>
             </div>
           </Card>
 
-          <Card className="overflow-hidden border-2 border-primary/20">
+          <Card id="notify" className="overflow-hidden border-2 border-primary/20 scroll-mt-24">
             <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-6 lg:p-8">
               <div className="space-y-4">
                 <div className="text-center">
